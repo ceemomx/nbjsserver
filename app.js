@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 app.use(function(req,res,next){
     var date = (new Date()).getHours();
-    if((date >= 17 && date <= 23) || (date >= 0 && date <= 9 )){
+    if((date >= 17 && date <= 23) || (date >= 0 && date < 9 )){
         res.set({
             'Cache-Control': 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0'
         });
