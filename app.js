@@ -27,7 +27,6 @@ app.get('/crab', function (req, res) {
     if(req.query.domain){
         robber[req.query.domain] = req.query.level;
     }
-    console.log(robber);
     res.status(200);
     res.end();
 });
