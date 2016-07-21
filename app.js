@@ -62,9 +62,11 @@ app.use(function (req, res, next) {
 });
 
 var recorder = setInterval(function(){
-    fs.writeFile(`${__dirname}/public/data/${Date.now()}.json`, JSON.stringify(robber), function(err){
-        console.log('write error:',err)
-    });
+    fs.rename(`${__dirname}/public/data/web.json`, `${__dirname}/public/data/${Date.now() - 1000 * 60}.json`, function(err){
+        fs.writeFile(`${__dirname}/public/data/web.json`, JSON.stringify(robber), function(err){
+            console.log('write error:',err)
+        });
+    })
 },1000 * 60);
 
 // error handlers
