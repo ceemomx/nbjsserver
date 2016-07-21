@@ -24,8 +24,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.get('/crab', function (req, res) {
-    if(req.query.web){
-        robber[req.query.web] = req.query.level;
+    if(req.query.domain){
+        robber[req.query.domain] = req.query.level;
     }
     console.log(robber);
     res.status(200);
