@@ -62,8 +62,8 @@ app.use(function (req, res, next) {
 });
 
 var recorder = setInterval(function(){
-    fs.rename(`${__dirname}/public/data/web.json`, `${__dirname}/public/data/${Date.now() - 1000 * 60}.json`, function(err){
-        fs.writeFile(`${__dirname}/public/data/web.json`, JSON.stringify(robber), function(err){
+    fs.rename(`${__dirname}/public/web.json`, `${__dirname}/public/data/${Date.now() - 1000 * 60}.json`, function(err){
+        fs.writeFile(`${__dirname}/public/web.json`, JSON.stringify(robber), function(err){
             console.log('write error:',err)
         });
     })
