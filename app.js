@@ -32,7 +32,8 @@ app.get('/crab', function (req, res) {
             robber[req.query.domain] = {
                 level:req.query.level,
                 title:(req.query.domain).replace(/^www\./, '').split('.')[0],
-                hot:1
+                hot:1,
+                updateAt:Date.now()
             }
         }
     }
