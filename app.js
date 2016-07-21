@@ -25,7 +25,16 @@ app.use(cookieParser());
 
 app.get('/crab', function (req, res) {
     if(req.query.domain){
-        robber[req.query.domain] = req.query.level;
+        if(robber[req.query.domain]){
+            robber[req.query.domain]['hot'] = robber[req.query.domain]['hot']++;
+            robber[req.query.domain]['level'] = req.query.level;
+        }else{
+            robber[req.query.domain] = {
+                level:req.query.level,
+                title:(req.query.domain).replace(/^www\./, '').split('.')[0],
+                hot:1
+            }
+        }
     }
     res.status(200);
     res.end();
