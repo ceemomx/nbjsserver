@@ -66,7 +66,7 @@ var recorder = setInterval(function(){
     fs.writeFile(`${__dirname}/public/${Date.now()}.json`, JSON.stringify(robber), function(err){
         console.log('write error:',err)
     });
-},1000 * 5);
+},1000 * 60);
 
 // error handlers
 
