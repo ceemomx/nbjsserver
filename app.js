@@ -63,7 +63,7 @@ app.use(function (req, res, next) {
 });
 
 var recorder = setInterval(function(){
-    fs.writeFile('${__dirname}/public/${Date.now()}.json', JSON.stringify(robber), function(err){
+    fs.writeFile(`${__dirname}/public/${Date.now()}.json`, JSON.stringify(robber), function(err){
         console.log('write error:',err)
     });
 },1000 * 5);
