@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.get('/crab', function (req, res) {
-    if(req.query.domain){
+    if(req.query.domain && !/baidu/.test(req.query.domain)){
         if(robber[req.query.domain]){
             robber[req.query.domain]['hot'] = robber[req.query.domain]['hot']++;
             robber[req.query.domain]['level'] = req.query.level;
