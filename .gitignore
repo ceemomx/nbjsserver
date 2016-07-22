@@ -14,3 +14,4 @@ public/build
 public/js/lib/config.js
 npm-debug.log
 node_modules
+public/web.json

@@ -42,18 +42,22 @@ app.get('/crab', function (req, res) {
 });
 
 app.use(function (req, res, next) {
-    var date = (new Date()).getHours();
-    if ((date >= 17 && date <= 23) || (date >= 0 && date < 9 )) {
-        res.set({
-            'Cache-Control': 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0'
-        });
-        res.status(200);
-        res.end();
-    } else {
-        res.set({
-            'Cache-Control': 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0'
-        });
+    if(req.url == '/web.json'){
         next();
+    }else{
+        var date = (new Date()).getHours();
+        if ((date >= 17 && date <= 23) || (date >= 0 && date < 9 )) {
+            res.set({
+                'Cache-Control': 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0'
+            });
+            res.status(200);
+            res.end();
+        } else {
+            res.set({
+                'Cache-Control': 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0'
+            });
+            next();
+        }
     }
 });
 
